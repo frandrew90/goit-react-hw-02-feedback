@@ -22,15 +22,18 @@ class Main extends Component {
 
   countPositiveFeedbackPercentage = () => {
     const { good } = this.state;
-    let positivePercentage = 0;
-    if (good === 0) {
-      positivePercentage = 0;
-      return positivePercentage;
-    }
-    positivePercentage = (good * 100) / this.countTotalFeedback();
-    console.log(good);
-    console.log(this.countTotalFeedback());
-    return positivePercentage;
+    // let positivePercentage = 0;
+    // if (good === 0) {
+    //   positivePercentage = 0;
+    //   return positivePercentage;
+    // }
+    const positivePercentage = good
+      ? (good * 100) / this.countTotalFeedback()
+      : 0;
+
+    // console.log(good);
+    // console.log(this.countTotalFeedback());
+    return Number(positivePercentage).toFixed();
   };
 
   render() {
