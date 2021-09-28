@@ -38,21 +38,12 @@ class App extends Component {
     const totalFeedback = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
     const options = Object.keys(this.state);
-    // console.log(options);
+    // console.log(positivePercentage);
 
     return (
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions addFeedback={this.addFeedback} options={options} />
-          {/* <button type="button" name="good" onClick={this.addFeedback}>
-            Good
-          </button>
-          <button type="button" name="neutral" onClick={this.addFeedback}>
-            Neutral
-          </button>
-          <button type="button" name="bad" onClick={this.addFeedback}>
-            Bad
-          </button> */}
         </Section>
         <Section title="Statistics">
           {totalFeedback !== 0 ? (

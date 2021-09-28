@@ -1,10 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import s from './FeedbackOptions.module.css';
 
 const FeedbackOptions = ({ addFeedback, options }) => {
   return (
     <>
       {options.map(option => (
-        <button type="button" name={option} onClick={addFeedback}>
+        <button
+          className={s.optionBtn}
+          type="button"
+          name={option}
+          onClick={addFeedback}
+          key={option}
+        >
           {option}
         </button>
       ))}
@@ -13,3 +21,8 @@ const FeedbackOptions = ({ addFeedback, options }) => {
 };
 
 export default FeedbackOptions;
+
+FeedbackOptions.propTypes = {
+  addFeedback: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
