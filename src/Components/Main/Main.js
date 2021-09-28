@@ -14,7 +14,28 @@ class Main extends Component {
     this.setState(prev => ({ [name]: prev[name] + 1 }));
   };
 
+  countTotalFeedback = () => {
+    const { bad, good, neutral } = this.state;
+    const total = bad + good + neutral;
+    return total;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const { good } = this.state;
+    let positivePercentage = 0;
+    if (good === 0) {
+      positivePercentage = 0;
+      return positivePercentage;
+    }
+    positivePercentage = (good * 100) / this.countTotalFeedback();
+    console.log(good);
+    console.log(this.countTotalFeedback());
+    return positivePercentage;
+  };
+
   render() {
+    const totalFeedback = this.countTotalFeedback();
+
     return (
       <>
         <Section title="Please leave feedback">
@@ -32,6 +53,8 @@ class Main extends Component {
           <p>Good:{this.state.good}</p>
           <p>Neutral:{this.state.neutral}</p>
           <p>Bad:{this.state.bad}</p>
+          <p>Total:{totalFeedback}</p>
+          <p>Positive feedback:{this.countPositiveFeedbackPercentage()}%</p>
         </Section>
       </>
     );
